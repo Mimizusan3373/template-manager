@@ -1,0 +1,100 @@
+{
+  "name": "template-manager",
+  "displayName": "template-manager",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:templateManager"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "templateManager": [
+        {
+          "id": "templateManager",
+          "name": "Templates",
+          "when": "templateManagerActive"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "templateManager",
+          "title": "Template Manager",
+          "icon": "$(list-unordered)"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "template-manager.addTemplate",
+        "title": "Add Template",
+        "icon": "$(add)"
+      },
+      {
+        "command": "template-manager.saveTemplate",
+        "title": "Save Template",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "template-manager.pasteTemplate",
+        "title": "Paste Template",
+        "icon": "$(clippy)"
+      },
+      {
+        "command": "template-manager.deleteTemplate",
+        "title": "Delete Template",
+        "icon": "$(trash)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "template-manager.addTemplate",
+          "when": "view == templateManager",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "template-manager.pasteTemplate",
+          "when": "view == templateManager && viewItem == template",
+          "group": "inline"
+        },
+        {
+          "command": "template-manager.deleteTemplate",
+          "when": "view == templateManager && viewItem == template",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.100.0",
+    "@types/glob": "^8.0.1",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "^8.33.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.4",
+    "@vscode/test-electron": "^2.2.2"
+  }
+}

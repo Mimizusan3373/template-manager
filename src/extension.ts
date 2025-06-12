@@ -118,9 +118,6 @@ class TemplateProvider implements vscode.TreeDataProvider<Template> {
 export function activate(context: vscode.ExtensionContext) {
 	console.log('Template Manager が有効化されました');
 
-	// Context を設定してビューを表示
-	vscode.commands.executeCommand('setContext', 'templateManagerActive', true);
-
 	const templateProvider = new TemplateProvider(context);
 	vscode.window.createTreeView('templateManager', {
 		treeDataProvider: templateProvider,

@@ -10,7 +10,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onView:templateManager"
+    "*"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -18,8 +18,7 @@
       "templateManager": [
         {
           "id": "templateManager",
-          "name": "Templates",
-          "when": "templateManagerActive"
+          "name": "Templates"
         }
       ]
     },
